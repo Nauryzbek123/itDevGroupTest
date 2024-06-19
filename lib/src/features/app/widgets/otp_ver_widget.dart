@@ -4,8 +4,8 @@ import 'package:test_proj/src/core/widgets/column_spacer.dart';
 import 'package:test_proj/src/features/app/widgets/pinput.dart';
 
 class otpVerificationCode extends StatefulWidget {
-  final TextEditingController controller;
-  otpVerificationCode({required this.controller});
+  final TextEditingController textEditingController;
+  otpVerificationCode({required this.textEditingController});
 
   @override
   State<otpVerificationCode> createState() => _otpVerificationCodeState();
@@ -14,7 +14,7 @@ class otpVerificationCode extends StatefulWidget {
 class _otpVerificationCodeState extends State<otpVerificationCode> {
   @override
   void dispose() {
-    widget.controller.dispose(); // Dispose the controller from the parent widget
+    widget.textEditingController.dispose(); 
     super.dispose();
   }
 
@@ -26,6 +26,7 @@ class _otpVerificationCodeState extends State<otpVerificationCode> {
         children: [
           
           OnlyBottomCursor(
+            controller: widget.textEditingController,
               ),
               ColumnSpacer(2),
                Text.rich(

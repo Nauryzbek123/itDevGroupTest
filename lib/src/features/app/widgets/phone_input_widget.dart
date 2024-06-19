@@ -4,7 +4,9 @@ import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 import 'package:test_proj/src/core/resources/app_colors.dart';
 
 class PhoneInput extends StatefulWidget {
-  const PhoneInput({super.key});
+    final TextEditingController controller;
+
+  const PhoneInput({required this.controller,super.key});
 
   @override
   _PhoneInputState createState() => _PhoneInputState();
@@ -20,7 +22,7 @@ class _PhoneInputState extends State<PhoneInput> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 70),
       child: TextFormField(
-        controller: _controller,
+        controller: widget.controller,
         keyboardType: TextInputType.phone,
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp(r'[0-9+\s]')),

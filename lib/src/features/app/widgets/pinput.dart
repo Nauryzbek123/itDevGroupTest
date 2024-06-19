@@ -4,22 +4,18 @@ import 'package:pinput/pinput.dart';
 import 'package:test_proj/src/core/resources/app_colors.dart';
 
 class OnlyBottomCursor extends StatefulWidget {
-  const OnlyBottomCursor({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  const OnlyBottomCursor({required this.controller, Key? key}) : super(key: key);
 
   @override
   _OnlyBottomCursorState createState() => _OnlyBottomCursorState();
-
-  @override
-  String toStringShort() => 'With Bottom Cursor';
 }
 
 class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
-  final controller = TextEditingController();
   final focusNode = FocusNode();
 
   @override
   void dispose() {
-    controller.dispose();
     focusNode.dispose();
     super.dispose();
   }
@@ -51,6 +47,7 @@ class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
         ),
       ],
     );
+
     final preFilledWidget = Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -65,18 +62,16 @@ class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
       ],
     );
 
-   
-
     return Pinput(
       length: 4,
       pinAnimationType: PinAnimationType.slide,
-      controller: controller,
+      controller: widget.controller,
       focusNode: focusNode,
       defaultPinTheme: defaultPinTheme,
       showCursor: true,
       cursor: cursor,
       preFilledWidget: preFilledWidget,
-      
     );
   }
 }
+
